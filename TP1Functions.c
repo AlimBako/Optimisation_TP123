@@ -173,7 +173,31 @@ float* Greedy(dataSet* dsptr)
 
 // ******************************* TP3 *************************************************
 
+float* VariableProcessing(dataSet* dsptr) {
+	int* a = dsptr->a;
+	float b = dsptr->b;
+	int* c = dsptr->c;
+	int n = dsptr->n;
+	int p;
 
+	float* x_gr = Greedy(dsptr);
+	float* x_rel = LinearRelaxation(dsptr,&p);
+	float z_opt = zfunc(dsptr, x_rel);
+	int j;
+
+	return &z_opt;
+}
+
+float zfunc(dataSet* dsptr, float* _x) {
+	int i;
+	float z = 0;
+	int* c = dsptr->c;
+	for (i=0; i < dsptr->n; i++) {
+		z += c[i] * _x[i]; 
+	}
+
+	return z;
+}
 
 // ****************************************************************************************
 void afficherf(float* tableau, int n) {
