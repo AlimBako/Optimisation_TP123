@@ -56,6 +56,9 @@ int main(int argc, char **argv)
 	float* linear = LinearRelaxation(&data, &p);
 	afficherf(linear, data.n);
 
+	float* greed = Greedy(&data);
+	afficherf(greed, data.n);
+
 	return rval;
 }
 

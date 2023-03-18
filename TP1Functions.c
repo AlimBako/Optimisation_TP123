@@ -136,6 +136,46 @@ float* LinearRelaxation(dataSet* dsptr, int*p)
 	return _x;
 }
 
+// *****************************************************************************
+
+float* Greedy(dataSet* dsptr)
+{
+	int* a = dsptr->a;
+	float b = dsptr->b;
+	int* c = dsptr->c;
+	int n = dsptr->n;
+	float* rapport = (float*)malloc(sizeof(float)*n);
+	int* index = (int*)malloc(sizeof(int)*n);
+	float* _x = (float*)malloc(sizeof(float)*n);
+	float _b = b;
+	int i, j;
+
+	for (i=0; i<n; i++) {
+		rapport[i] = c[i]/a[i];
+		index[i] = i;
+
+		_x[i] = 0;
+	}
+
+	selection_sort(rapport, index, n);
+
+	for(j=0; j<n; j++){
+		if(_b == 0) return _x;
+
+		if (_b >= a[index[j]] ) {
+		_x[index[j]] = 1;
+		_b = _b - a[index[j]];
+		}
+	}
+
+	return _x;
+}
+
+// ******************************* TP3 *************************************************
+
+
+
+// ****************************************************************************************
 void afficherf(float* tableau, int n) {
    printf("Le tableau de flottants est : \n");
    

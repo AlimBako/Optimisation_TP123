@@ -42,5 +42,5 @@ void afficherf(float* tableau, int n);
 
 // ****************************************************************************
 float* VariableProcessing(dataSet* dsptr);
-float z(dataSet* dsptr, float* _x);
+float zfunc(dataSet* dsptr, float* _x);
 
