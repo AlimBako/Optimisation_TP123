@@ -261,3 +261,8 @@ void selection_sort(float* arr, int* index_arr, int n) {
         }
     }
 }
+
+//******************************************************************
+double tempsexec(clock_t start_t, clock_t end_t) {
+	return (double)(end_t - start_t) / CLOCKS_PER_SEC;
+}

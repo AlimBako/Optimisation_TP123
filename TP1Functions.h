@@ -25,6 +25,9 @@ typedef struct dataSet
 
 } dataSet;
 
+double tempsexec(clock_t start_t, clock_t end_t);
+//***************************************************************
+
 int read_TP1_instance(FILE*fin,dataSet* dsptr);
 int* TP1_solve_exact(dataSet* dsptr);
 int max(int x, int y);

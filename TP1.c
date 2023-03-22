@@ -5,6 +5,7 @@
 #include <sys/time.h>
 #include <math.h>
 #include "TP1Functions.h"
+#include <time.h>
 
 
 int main(int argc, char **argv)
@@ -47,12 +48,20 @@ int main(int argc, char **argv)
 	read_TP1_instance(fin,&data);
 	fclose(fin);
 
+	// Calcul du temps d'execution
+	clock_t start_t, end_t;
+	double tps_exec;
+
 	//execute your solution methods on the instance you just read
 	//Exact solution
+	start_t = clock();
 	int* sol = TP1_solve_exact(&data);
+	end_t = clock();
 	printf("La solution du programme dynamic est : \n");
 	afficher(sol, data.n);
+	printf("Le temps d'execution pour cette instance est: %fs \n", tempsexec(start_t, end_t));
 	printf("\n");
+
 
 	int p = 0;
 	float* linear = LinearRelaxation(&data, &p);
