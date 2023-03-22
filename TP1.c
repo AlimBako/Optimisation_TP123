@@ -50,14 +50,25 @@ int main(int argc, char **argv)
 	//execute your solution methods on the instance you just read
 	//Exact solution
 	int* sol = TP1_solve_exact(&data);
+	printf("La solution du programme dynamic est : \n");
 	afficher(sol, data.n);
+	printf("\n");
 
 	int p = 0;
 	float* linear = LinearRelaxation(&data, &p);
+	printf("La solution de la relaxation linéaire est : \n");
 	afficherf(linear, data.n);
+	printf("Pour cette solution, on a z_linRel = ");
+	printf("%.2f \n", zfunc(&data, linear));
+	printf("\n");
+
 
 	float* greed = Greedy(&data);
+	printf("La solution de l'algorithme glouton est : \n");
 	afficherf(greed, data.n);
+	printf("Pour cette solution, on a z_greedy = ");
+	printf("%.2f \n", zfunc(&data, greed));
+	printf("\n");
 
 	return rval;
 }

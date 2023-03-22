@@ -89,8 +89,6 @@ int max(int x, int y)
 }
 
 void afficher(int* tableau, int n) {
-   printf("Le tableau d'entiers est : \n");
-   
    // Boucle for pour parcourir et afficher le tableau
    for(int i=0; i<n; i++) {
       printf("%d ", *(tableau+i));
@@ -220,11 +218,9 @@ float zfunc(dataSet* dsptr, float* _x) {
 
 // ****************************************************************************************
 void afficherf(float* tableau, int n) {
-   printf("Le tableau de flottants est : \n");
-   
    // Boucle for pour parcourir et afficher le tableau
    for(int i=0; i<n; i++) {
-      printf("%4.2f ", *(tableau+i));
+      printf("%.2f ", *(tableau+i));
    }
    
    printf("\n");
