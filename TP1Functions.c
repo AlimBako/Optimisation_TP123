@@ -186,6 +186,7 @@ float* VariableProcessing(dataSet* dsptr) {
 	float* x_rel = LinearRelaxation(dsptr,&p);
 	float z_opt = zfunc(dsptr, x_rel);
 	int j;
+	int compteur = 0;
 
 	float* _c = (float*)malloc(sizeof(float)*n);
 
@@ -195,12 +196,19 @@ float* VariableProcessing(dataSet* dsptr) {
 		if (_c[j] >= z_opt - zfunc(dsptr, x_gr)) {
 			if (j <= p-1) {
 				x_gr[j] = 1;
+				compteur++;
 				b = b - a[j];
 			}
 
-			else x_gr[j] = 0;
+			else {
+				x_gr[j] = 0;
+				compteur++;
+				}
 		}
 	}
+
+	float pourc = ((float)compteur / n) * 100;
+	printf("Le pourcentage de variable fixée est: %.2f % \n", pourc);
 	
 	return x_gr;
 }
