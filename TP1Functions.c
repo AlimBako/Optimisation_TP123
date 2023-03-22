@@ -172,6 +172,10 @@ float* Greedy(dataSet* dsptr)
 }
 
 // ******************************* TP3 *************************************************
+float valeurAbsolue(float z) {
+	if (z < 0) return -z;
+	return z;
+}
 
 float* VariableProcessing(dataSet* dsptr) {
 	int* a = dsptr->a;
@@ -185,6 +189,21 @@ float* VariableProcessing(dataSet* dsptr) {
 	float z_opt = zfunc(dsptr, x_rel);
 	int j;
 
+	float* _c = (float*)malloc(sizeof(float)*n);
+
+	for (j=0;j<n;j++) {
+		_c[j] = valeurAbsolue(c[j] - ((c[p]/a[p]) * a[j]));
+
+		if (_c[j] >= z_opt - zfunc(dsptr, x_gr)) {
+			if (j <= p-1) {
+				x_gr[j] = 1;
+				b = b - a[j];
+			}
+
+			else x_gr[j] = 0;
+		}
+	}
+	
 	return &z_opt;
 }
 
