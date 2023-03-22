@@ -202,7 +202,7 @@ float* VariableProcessing(dataSet* dsptr) {
 		}
 	}
 	
-	return &z_opt;
+	return x_gr;
 }
 
 float zfunc(dataSet* dsptr, float* _x) {

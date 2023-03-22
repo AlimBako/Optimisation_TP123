@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 
 	// Calcul du temps d'execution
 	clock_t start_t, end_t;
-	double tps_exec;
+	// double tps_exec;
 
 	//execute your solution methods on the instance you just read
 	//Exact solution
@@ -64,19 +64,35 @@ int main(int argc, char **argv)
 
 
 	int p = 0;
+	start_t = clock();
 	float* linear = LinearRelaxation(&data, &p);
+	end_t = clock();
 	printf("La solution de la relaxation linéaire est : \n");
 	afficherf(linear, data.n);
 	printf("Pour cette solution, on a z_linRel = ");
 	printf("%.2f \n", zfunc(&data, linear));
+	printf("Le temps d'execution pour cette instance est: %fs \n", tempsexec(start_t, end_t));
 	printf("\n");
 
 
+	start_t = clock();
 	float* greed = Greedy(&data);
+	end_t = clock();
 	printf("La solution de l'algorithme glouton est : \n");
 	afficherf(greed, data.n);
 	printf("Pour cette solution, on a z_greedy = ");
 	printf("%.2f \n", zfunc(&data, greed));
+	printf("Le temps d'execution pour cette instance est: %fs \n", tempsexec(start_t, end_t));
+	printf("\n");
+
+	start_t = clock();
+	float* varproc = VariableProcessing(&data);
+	end_t = clock();
+	printf("La solution du knapsack est : \n");
+	afficherf(varproc, data.n);
+	printf("Pour cette solution, on a z_knapsack = ");
+	printf("%.2f \n", zfunc(&data, varproc));
+	printf("Le temps d'execution pour cette instance est: %fs \n", tempsexec(start_t, end_t));
 	printf("\n");
 
 	return rval;
