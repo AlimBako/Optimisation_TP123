@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 	printf("\n");
 
 
+	// Linear Relaxation
 	int p = 0;
 	start_t = clock();
 	float* linear = LinearRelaxation(&data, &p);
@@ -75,6 +76,7 @@ int main(int argc, char **argv)
 	printf("\n");
 
 
+	// Greedy 
 	start_t = clock();
 	float* greed = Greedy(&data);
 	end_t = clock();
@@ -85,6 +87,8 @@ int main(int argc, char **argv)
 	printf("Le temps d'execution pour cette instance est: %fs \n", tempsexec(start_t, end_t));
 	printf("\n");
 
+
+	// Knapsack - Variable processing
 	start_t = clock();
 	float* varproc = VariableProcessing(&data);
 	end_t = clock();
